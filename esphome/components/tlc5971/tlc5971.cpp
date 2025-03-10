@@ -70,9 +70,7 @@ void TLC5971::transfer_(uint8_t send) {
   bitdelay_us = 1;
 
   for (uint8_t b = startbit; b != 0; b = b >> 1) {
-    if (bitdelay_us) {
-      delayMicroseconds(bitdelay_us);
-    }
+    delayMicroseconds(bitdelay_us);
 
     towrite = send & b;
     if ((lastmosi != towrite)) {
@@ -82,9 +80,7 @@ void TLC5971::transfer_(uint8_t send) {
 
     this->clock_pin_->digital_write(true);
 
-    if (bitdelay_us) {
-      delayMicroseconds(bitdelay_us);
-    }
+    delayMicroseconds(bitdelay_us);
 
     this->clock_pin_->digital_write(false);
   }
