@@ -67,6 +67,7 @@ void TLC5971::transfer_(uint8_t send) {
 
   bool towrite, lastmosi = !(send & startbit);
   uint8_t bitdelay_us = (1000000 / 1000000) / 2;
+  bitdelay_us = 1;
 
   for (uint8_t b = startbit; b != 0; b = b >> 1) {
     if (bitdelay_us) {
